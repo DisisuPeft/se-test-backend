@@ -17,7 +17,7 @@ return [
 
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
-        'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',
+        'localhost,localhost:3000,localhost:4200,127.0.0.1,127.0.0.1:8000,::1',
         Sanctum::currentApplicationUrlWithPort(),
         // env('APP_URL') ? ','
         // Sanctum::currentRequestHost(),
@@ -85,6 +85,6 @@ return [
     'cookie_max_age' => env('SANCTUM_COOKIE_MAX_AGE', 525600),
     'cookie_path' => env('SANCTUM_COOKIE_PATH', '/'),
     'cookie_domain' => env('SANCTUM_COOKIE_DOMAIN', null),
-    'cookie_secure' => env('SANCTUM_COOKIE_SECURE', true),
+    'cookie_secure' => env('SANCTUM_COOKIE_SECURE', false),
     'cookie_same_site' => env('SANCTUM_COOKIE_SAME_SITE', 'lax'),
 ];

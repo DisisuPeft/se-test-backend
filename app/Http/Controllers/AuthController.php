@@ -40,13 +40,13 @@ class AuthController extends Controller
             //aqui se aplican las cookies
             return $response->cookie('access_token',
                 $token,
-                config('sanctum.cookie_max_age', 525600),
-                config('sanctum.cookie_path', '/'),
-                config('sanctum.cookie_domain', null),
-                config('sanctum.cookie_secure', true),
+                config('sanctum.cookie_max_age'),
+                config('sanctum.cookie_path'),
+                config('sanctum.cookie_domain'),
+                config('sanctum.cookie_secure'),
                 true,
                 false,
-                config('sanctum.cookie_samesite', 'lax')
+                config('sanctum.cookie_samesite')
             );
         } catch (ValidationException $e){
             return response()->json([
@@ -63,7 +63,7 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         try {
-            $request->user()->tokens()->delete();
+            $request->user()->currentAccessToken()->delete();
             $response = response()->json([
                 'message' => 'cierre de sesion exitoso'
             ], 200);
